@@ -1,0 +1,9 @@
+---
+- name: Gather Host Facts
+  hosts: all
+  gather_facts: true
+
+  tasks:
+  
+  - name: Print System Facts 
+    ansible.builtin.debug: "{{ ansible_facts }}"
