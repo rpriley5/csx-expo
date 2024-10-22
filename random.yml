@@ -1,12 +1,16 @@
 ---
-- name: Perform a line count on a file named 'names.csv' and print a random number in that range.
-  hosts: all
-  gather_facts: false
+- name: Random line from file
+  hosts: localhost
   tasks:
     - name: Count lines in file
-      register: wc_output
-      ansible.builtin.shell: wc -l /home/rriley/names.csv | awk '{print $1}'
+      register: line_count
+      ansible.builtin.shell: wc -l names.csv | awk '{print $1}'
+      changed_when: false
 
-    - name: Print random number in range
-      ansible.builtin.debug:
-        msg: "{{ wc_output.stdout | random }}"
+    - name: Random number
+      ansible.builtin.set_fact:
+        random_number: "{{ line_count.stdout | random }}"
+
+    - name: Print line at random index
+      ansible.builtin.shell: head -n {{ random_number }} names.csv | tail -n 1
+      changed_when: false
