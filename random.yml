@@ -12,5 +12,5 @@
         random_number: "{{ line_count.stdout | random }}"
 
     - name: Print line at random index
-      ansible.builtin.shell: head -n {{ random_number }} names.csv | tail -n 1
+      ansible.builtin.shell: head -n {{ random_number }} csx.csv | tail -n 1
       changed_when: false
