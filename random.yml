@@ -1,6 +1,6 @@
 ---
 - name: Random line from file
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Count lines in file
       register: line_count
