@@ -4,7 +4,7 @@
   tasks:
     - name: Count lines in file
       register: line_count
-      ansible.builtin.shell: wc -l names.csv | awk '{print $1}'
+      ansible.builtin.shell: wc -l csx.csv | awk '{print $1}'
       changed_when: false
 
     - name: Random number
