@@ -5,11 +5,7 @@
   tasks:
     - name: Count lines in file
       register: wc_output
-      ansible.builtin.shell: wc -l /home/ryariley/csx-expo/names.csv | awk '{print $1}'
-
-    - name: Convert to Int
-      ansible.builtin.set_fact:
-        count: "{{ wc_output | int }}"
+      ansible.builtin.shell: wc -l /home/rriley/names.csv | awk '{print $1}'
 
     - name: Print random number in range
       ansible.builtin.debug:
